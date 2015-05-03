@@ -47,7 +47,6 @@ def iterlines(wordnetdir):
 class SynSet(object):
 
     def __init__(self, line):
-        print(type(line))
         self.line = line
         if isinstance(line, bytes):
             line = line.decode('utf-8')
