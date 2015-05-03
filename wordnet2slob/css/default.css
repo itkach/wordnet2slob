@@ -1,0 +1,39 @@
+body {
+    background-color: white;
+    font-family: sans-serif;
+    color: black;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #002bb8;
+    background: none;
+}
+
+a:visited {
+    color: #5a3696;
+}
+
+a:active {
+    color: #faa700;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.pos {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.co {
+    color: #666666;
+}
+
+
+.ex {
+    font-family: serif;
+    font-style: italic;
+}
