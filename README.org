@@ -1,0 +1,56 @@
+* wordnet2slob
+  This is a tool to convert [[http://wordnet.princeton.edu][WordNet]] database to [[https://github.com/itkach/slob][slob]].
+
+** Installation
+
+   Create Python 3 virtual environment and install slob.py as
+   described at http://github.org/itkach/slob/.
+
+   In this virtual environment run
+
+   #+BEGIN_SRC sh
+   pip install git+https://github.com/itkach/wordnet2slob.git
+   #+END_SRC
+
+** Usage
+
+   [[http://wordnet.princeton.edu/wordnet/download/][Download]] and unpack WordNet database. For example:
+
+   #+BEGIN_SRC sh
+   wget http://wordnetcode.princeton.edu/wn3.1.dict.tar.gz
+   mkdir WordNet3.1
+   cd WordNet3.1
+   tar -xvf ../wn3.1.dict.tar.gz
+   #+END_SRC
+
+   Then run converter (in wordnet directory):
+
+   #+BEGIN_SRC sh
+   wordnet2slob
+   #+END_SRC
+
+   ~wordnet.zlib.slob~ will be created in the same directory.
+
+   #+BEGIN_SRC sh
+
+usage: wordnet2slob [-h] [-s SOURCE_DIR] [-o OUTPUT_FILE] [-c {lzma2,zlib}]
+                    [-b BIN_SIZE] [-a CREATED_BY] [-w WORK_DIR]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SOURCE_DIR, --source-dir SOURCE_DIR
+                        Path to WordNet source directory (containing dict
+                        subdirectory). Default: .
+  -o OUTPUT_FILE, --output-file OUTPUT_FILE
+                        Name of output slob file
+  -c {lzma2,zlib}, --compression {lzma2,zlib}
+                        Name of compression to use. Default: zlib
+  -b BIN_SIZE, --bin-size BIN_SIZE
+                        Minimum storage bin size in kilobytes. Default: 384
+  -a CREATED_BY, --created-by CREATED_BY
+                        Value for created.by tag. Identifier (e.g. name or
+                        email) for slob file creator
+  -w WORK_DIR, --work-dir WORK_DIR
+                        Directory for temporary files created during
+                        compilation. Default: .
+#+END_SRC
