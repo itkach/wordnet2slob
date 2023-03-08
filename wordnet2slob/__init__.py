@@ -210,6 +210,8 @@ class WordNet(object):
             if i % 5000 == 0 and i > 0:
                 sys.stdout.write("\n")
                 sys.stdout.flush()
+            if not line or not line.strip():
+                continue
             synset = SynSet(line)
             gloss_with_examples, _ = quoted_text.subn(
                 lambda x: '<cite class="ex">%s</cite>' % x.group(1), synset.gloss
