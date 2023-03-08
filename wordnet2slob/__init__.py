@@ -370,6 +370,14 @@ def parse_args():
     )
 
     arg_parser.add_argument(
+        "-r",
+        "--release-name",
+        default="",
+        type=str,
+        help=("WordNet data release name (version)"),
+    )
+
+    arg_parser.add_argument(
         "--tag-princeton",
         action="store_true",
         help=("Set tags to Princeton Wordnet values"),
@@ -386,7 +394,9 @@ def main():
 
     outname = args.output_file
     if outname is None:
-        outname = os.path.extsep.join(("wordnet", args.compression, "slob"))
+        outname = os.path.extsep.join(
+            (f"open-english-wordnet-{args.release_name}", "slob")
+        )
 
     wordnetdir = os.path.expanduser(args.source_dir)
 
@@ -415,7 +425,7 @@ def main():
             slb.tag("uri", "http://wordnet.princeton.edu")
             slb.tag("copyright", "2011 Princeton University")
         else:
-            slb.tag("label", "Open English WordNet")
+            slb.tag("label", f"Open English WordNet {args.release_name}")
             slb.tag("license.name", "CC-BY 4.0")
             slb.tag(
                 "license.url",
