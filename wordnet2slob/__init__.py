@@ -110,6 +110,7 @@ class PointerSymbols(object):
         "-r": "Member of this domain - REGION",
         ";u": "Domain of synset - USAGE",
         "-u": "Member of this domain - USAGE",
+        "^": "Also see",
     }
 
     v = {
@@ -146,6 +147,7 @@ class PointerSymbols(object):
         ";c": "Domain of synset - TOPIC",
         ";r": "Domain of synset - REGION",
         ";u": "Domain of synset - USAGE",
+        "^": "Also see",
     }
 
 
