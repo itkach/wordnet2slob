@@ -369,6 +369,12 @@ def parse_args():
         ),
     )
 
+    arg_parser.add_argument(
+        "--tag-princeton",
+        action="store_true",
+        help=("Set tags to Princeton Wordnet values"),
+    )
+
     return arg_parser.parse_args()
 
 
@@ -401,12 +407,24 @@ def main():
         observer.begin("all")
         observer.begin("content")
         # create tags
-        slb.tag("label", "WordNet")
-        slb.tag("license.name", "WordNet License")
-        slb.tag("license.url", "http://wordnet.princeton.edu/wordnet/license/")
-        slb.tag("source", "http://wordnet.princeton.edu")
-        slb.tag("uri", "http://wordnet.princeton.edu")
-        slb.tag("copyright", "2011 Princeton University")
+        if args.tag_princeton:
+            slb.tag("label", "WordNet")
+            slb.tag("license.name", "WordNet License")
+            slb.tag("license.url", "http://wordnet.princeton.edu/wordnet/license/")
+            slb.tag("source", "http://wordnet.princeton.edu")
+            slb.tag("uri", "http://wordnet.princeton.edu")
+            slb.tag("copyright", "2011 Princeton University")
+        else:
+            slb.tag("label", "Open English WordNet")
+            slb.tag("license.name", "CC-BY 4.0")
+            slb.tag(
+                "license.url",
+                "https://github.com/globalwordnet/english-wordnet/blob/master/LICENSE.md",
+            )
+            slb.tag("source", "https://github.com/globalwordnet/english-wordnet")
+            slb.tag("uri", "https://en-word.net")
+            slb.tag("copyright", "Open English WordNet team")
+
         slb.tag("created.by", args.created_by)
         wordnet = WordNet(wordnetdir, slb)
         content_dir = os.path.dirname(__file__)
